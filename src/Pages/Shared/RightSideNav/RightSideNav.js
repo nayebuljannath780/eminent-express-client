@@ -1,46 +1,50 @@
-import React, { useContext } from "react";
-import Button from "react-bootstrap/Button";
-import { FcGoogle, FcPrivacy } from "react-icons/fc";
+import React, { useEffect, useState } from "react";
+import { FcPrivacy } from "react-icons/fc";
+import ListGroup from "react-bootstrap/ListGroup";
+import { Link } from "react-router-dom";
+import c_pic1 from '../../../assets/categories/news.jpg';
+import './RightSideNav.css';
 import {
   FaFacebook,
-  FaGithub,
   FaTwitter,
   FaWhatsapp,
   FaYoutube,
+  FaRegClock
 } from "react-icons/fa";
-import ListGroup from "react-bootstrap/ListGroup";
-import BrandCarousel from "../BrandCarousel/BrandCarousel";
-import { AuthContext } from "../../../context/AuthProvider";
-import { GoogleAuthProvider } from "firebase/auth";
+
 
 const RightSideNav = () => {
-  const { loginProvider } = useContext(AuthContext);
+  const [categories, setCategories] = useState([]);
 
-  const googleProvider = new GoogleAuthProvider();
-
-  const handleGoogleLogin = () => {
-    loginProvider(googleProvider)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-      })
-      .then((error) => console.error(error));
-  };
+  useEffect(() => {
+    fetch("http://localhost:8080/category")
+      .then((res) => res.json())
+      .then((data) => setCategories(data));
+  }, []);
 
   return (
     <div>
-      <Button
-        onClick={handleGoogleLogin}
-        className="w-100 my-2"
-        variant="outline-success"
-      >
-        <FcGoogle /> Login with Google
-      </Button>{" "}
-      <Button className="w-100" variant="outline-info">
-        <FaGithub /> Login with GitHub
-      </Button>{" "}
-      <h5 className="mt-3">Find us On</h5>
-      <ListGroup>
+      <h3 className="news_heading mt-3">Categories</h3>
+      <ListGroup className="list_group">
+        {categories.map((category) => (
+          <ListGroup.Item className="categories_list border-0 mb-2" key={category.id}>
+            <Link to={`/category/${category.id}`}>
+              <div className="d-flex">
+                <div>
+                  <img src={c_pic1} alt='' className="cate_list_img" />
+                </div>
+                <div className="flex-column">
+                  <span className="black_color">{category.name}</span> <br />
+                  <span className="span_date"><FaRegClock/> {category.date}</span>
+                </div>
+              </div>
+            </Link>
+          </ListGroup.Item>
+        ))}
+      </ListGroup>
+
+      <h5>Find us on</h5>
+      <ListGroup className="me-5">
         <ListGroup.Item>
           <FaFacebook /> FaceBook
         </ListGroup.Item>
@@ -57,9 +61,6 @@ const RightSideNav = () => {
           <FcPrivacy /> Privacy Policy
         </ListGroup.Item>
       </ListGroup>
-      <div>
-        <BrandCarousel />
-      </div>
     </div>
   );
 };

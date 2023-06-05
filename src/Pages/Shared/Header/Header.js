@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -20,9 +19,9 @@ const Header = () => {
       });
   };
   return (
-    <div className="mb-2">
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Container>
+    <div className="mb-5 mx-o" >
+      <Navbar fixed="top" collapseOnSelect expand="lg" bg="dark" variant="dark" style={{height: 60, marginBottom: 20}} >
+        <>
           <Navbar.Brand>
             <Link to="/">EminentExpress</Link>
           </Navbar.Brand>
@@ -80,7 +79,7 @@ const Header = () => {
               <LeftSideNav></LeftSideNav>
             </div>
           </Navbar.Collapse>
-        </Container>
+        </>
       </Navbar>
     </div>
   );

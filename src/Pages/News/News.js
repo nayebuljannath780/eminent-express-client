@@ -1,31 +1,48 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { FaEye } from "react-icons/fa";
+import Image from "react-bootstrap/Image";
+import { FaStar } from "react-icons/fa";
 
 const News = () => {
   const news = useLoaderData();
-  const { image_url, title, author, category_id, details, total_view } = news;
+  const { image_url, title, author, rating, category_id, details } = news;
 
   return (
-    <Card style={{ width: "100%" }}>
-      <Card.Img variant="top" src={image_url} />
-      <Card.Body>
-        <Card.Title>{title}</Card.Title>
-        {/* <div className="d-flex justify-content-around p-2">
-          <p>{author?.name}</p>
-          <p>{author?.published_date}</p>
-          <div>
-            <FaEye className="me-2" />
-            <span>{total_view}</span>
+
+    <Card className="my-3">
+      <Card.Header className=" border-0">
+        <div className="d-flex justify-content-between align-items-center">
+          <div className="d-flex">
+            <Image
+              roundedCircle
+              className="me-2"
+              src={author.img}
+              style={{ height: 60 }}
+            />
+            <div className="">
+              <p className="mb-0">{author?.name}</p>
+              <p>{author?.published_date}</p>
+            </div>
           </div>
-        </div> */}
-        <Card.Text>{details}</Card.Text>
-        <Link to={`/category/${category_id}`}>
-          <Button variant="primary">All news in this category</Button>
-        </Link>
+          <div className="flex">
+              <FaStar className="text-warning mx-2" />
+              <span>{rating?.number}</span>
+          </div>
+        </div>
+      </Card.Header>
+      <Card.Body>
+        <Card.Img variant="top" src={image_url} />
+        <Card.Title className="my-4">{title}</Card.Title>
+        <Card.Text className="text-justify">
+          {details}
+        </Card.Text>
       </Card.Body>
+      <Card.Footer className="d-flex flex-row-reverse justify-content-between align-item-center border-0 ">
+      <Link to={`/category/${category_id}`}>
+          <span className="news_heading">Back to All news</span>
+        </Link>
+      </Card.Footer>
     </Card>
   );
 };

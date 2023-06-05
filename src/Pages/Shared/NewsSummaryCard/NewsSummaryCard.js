@@ -1,40 +1,29 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-import Image from "react-bootstrap/Image";
-import { FaBookmark, FaEye, FaShareAlt, FaStar } from "react-icons/fa";
+import { FaStar, FaRegClock } from "react-icons/fa";
 
 const NewsSummaryCard = ({ news }) => {
-  const { _id, author, rating, title, details, image_url, total_view } = news;
+  console.log(news)
+  const { _id, author, category_name, rating, title, details, image_url } = news;
   return (
-    <Card className="my-3">
-      <Card.Header>
-        <div className="d-flex justify-content-between align-items-center">
-          <div className="d-flex">
-            <Image
-              roundedCircle
-              className="me-2"
-              src={author.img}
-              style={{ height: 60 }}
-            />
-            <div className="">
-              <p className="mb-0">{author?.name}</p>
-              <p>{author?.published_date}</p>
-            </div>
-          </div>
-          <div>
-            <FaBookmark className="me-1" />
-            <FaShareAlt />
-          </div>
-        </div>
-      </Card.Header>
+    <Card className="my-3 border-0 position-relative" style={{ width: '100%', height: '25rem' }}>
+      <span className="card_cate_btn">Trending</span>
+      <div className="card_category_highlighter">
+        <span style={{ background: 'rgba(0, 0, 0, 0.7)' }}>{category_name || 'HOt'}</span>
+      </div>
       <Card.Body>
-        <Card.Title>{title}</Card.Title>
-        <Card.Img variant="top" src={image_url} />
-        <Card.Text>
-          {details.length > 250 ? (
+        <img variant="top" className="p-0 card_img" src={image_url} alt="" style={{ width: '100%', height: '15rem', border: 'none', borderRadius: 0 }} />
+
+        <div className="d-flex justify-content-between align-items-center mt-2">
+          <small><FaRegClock className="me-2 mb-1" />{author.published_date}</small>
+          <small><FaStar className="text-warning me-2 mb-1" />{rating?.number}</small>
+        </div>
+        <Card.Title className="my-3 card_title">{title}</Card.Title>
+        <Card.Text className="card_text">
+          {details.length > 100 ? (
             <>
-              {details.slice(0, 250) + "...."}{" "}
+              {details.slice(0, 100) + "...."}{" "}
               <Link to={`/news/${_id}`}>Read more</Link>
             </>
           ) : (
@@ -42,16 +31,6 @@ const NewsSummaryCard = ({ news }) => {
           )}
         </Card.Text>
       </Card.Body>
-      <Card.Footer className="d-flex justify-content-between align-item-center">
-        <div>
-          <FaStar className="text-warning me-2" />
-          <span>{rating?.number}</span>
-        </div>
-        <div>
-          <FaEye className="me-2" />
-          <span>{total_view}</span>
-        </div>
-      </Card.Footer>
     </Card>
   );
 };

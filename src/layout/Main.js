@@ -1,30 +1,29 @@
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
-import LeftSideNav from "../Pages/Shared/LeftSideNav/LeftSideNav";
 import RightSideNav from "../Pages/Shared/RightSideNav/RightSideNav";
 import Header from "../Pages/Shared/Header/Header";
 import Footer from "../Pages/Shared/Footer/Footer";
-
 const Main = () => {
   return (
-    <div>
+  <div className="under_root px-5">
+    <div className="main">
       <Header />
-      <Container>
+      <div className="header-space" />
+      <>
         <Row>
-          <Col lg={2} className="d-none d-lg-block">
-            <LeftSideNav />
-          </Col>
-          <Col lg={7}>
+          <Col lg={9} className="px-5">
             <Outlet></Outlet>
           </Col>
-          <Col lg={3}>
+          <Col lg={3} className="position-fixed d-none d-lg-block me-5" style={{ top: '5rem', right: '0' }}>
             <RightSideNav />
           </Col>
         </Row>
-      </Container>
+      </>
       <Footer />
     </div>
+  </div>
+
   );
 };
 

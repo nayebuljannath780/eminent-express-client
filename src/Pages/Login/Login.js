@@ -4,6 +4,8 @@ import Form from "react-bootstrap/Form";
 import { AuthContext } from "../../context/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { GoogleAuthProvider } from "firebase/auth";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -39,34 +41,57 @@ const Login = () => {
         setLoading(false);
       });
   };
-  return (
-    <Form onSubmit={handleUserLogin}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control
-          name="email"
-          type="email"
-          placeholder="Enter email"
-          required
-        />
-      </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          name="password"
-          type="password"
-          placeholder="Password"
-          required
-        />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Login
+  const { loginProvider } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+
+  const handleGoogleLogin = () => {
+    loginProvider(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .then((error) => console.error(error));
+  };
+  return (
+    <>
+      <Form onSubmit={handleUserLogin}>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            name="email"
+            type="email"
+            placeholder="Enter email"
+            required
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            name="password"
+            type="password"
+            placeholder="Password"
+            required
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Login
+        </Button>
+        <p>
+          <Form.Text className="text-danger">{error}</Form.Text>
+        </p>
+      </Form>
+      <>
+      <Button
+        onClick={handleGoogleLogin}
+        className="w-100 my-2"
+        variant="outline-success"
+      >
+        <FcGoogle /> Login with Google
       </Button>
-      <p>
-        <Form.Text className="text-danger">{error}</Form.Text>
-      </p>
-    </Form>
+      </>
+    </>
   );
 };
 
