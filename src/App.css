@@ -50,8 +50,12 @@
   top: 53.5%;
   right: 4%;
 }
-.card_category_highlighter> span{
+
+.card_category_highlighter>span {
   padding: 8px 20px;
   border-top: 2px solid var(--yellow);
   border-bottom: 2px solid var(--yellow);
 }
+
+
+

@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import NewsSummaryCard from "../Shared/NewsSummaryCard/NewsSummaryCard";
 import Slider from "../../components/Slider/Slider";
 import { Row, Col } from 'react-bootstrap';
+import About from "../About/About";
 
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
           </Col>
         ))}
       </Row>
+      <About/>
     </div>
   );
 };

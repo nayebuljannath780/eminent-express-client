@@ -5,7 +5,6 @@ import { Col, Row } from "react-bootstrap";
 
 const Category = () => {
   const categoryNews = useLoaderData();
-  console.log('hiiiiiii', categoryNews)
   return (
     <div className="mt-5">
       <h2>This category has: {categoryNews.category_name || "booooo"}</h2>

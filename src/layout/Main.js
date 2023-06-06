@@ -3,7 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
 import RightSideNav from "../Pages/Shared/RightSideNav/RightSideNav";
 import Header from "../Pages/Shared/Header/Header";
-import Footer from "../Pages/Shared/Footer/Footer";
+
 const Main = () => {
   return (
   <div className="under_root px-5">
@@ -20,7 +20,6 @@ const Main = () => {
           </Col>
         </Row>
       </>
-      <Footer />
     </div>
   </div>
 
