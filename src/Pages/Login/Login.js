@@ -55,7 +55,7 @@ const Login = () => {
   };
   return (
     <>
-      <Form onSubmit={handleUserLogin}>
+      <Form className="mt-5" onSubmit={handleUserLogin}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -75,7 +75,7 @@ const Login = () => {
             required
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="warning" type="submit" >
           Login
         </Button>
         <p>
@@ -88,7 +88,7 @@ const Login = () => {
         className="w-100 my-2"
         variant="outline-success"
       >
-        <FcGoogle /> Login with Google
+        <span><FcGoogle /> Login with Google</span>
       </Button>
       </>
     </>

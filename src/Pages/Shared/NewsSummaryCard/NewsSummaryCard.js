@@ -7,7 +7,7 @@ const NewsSummaryCard = ({ news }) => {
   console.log(news)
   const { _id, author, category_name, rating, title, details, image_url } = news;
   return (
-    <Card className="my-3 border-0 position-relative" style={{ width: '100%', height: '25rem' }}>
+    <Card className="my-3 border-0 position-relative home_card" style={{ width: '100%', height: '25rem' }}>
       <span className="card_cate_btn">Trending</span>
       <div className="card_category_highlighter">
         <span style={{ background: 'rgba(0, 0, 0, 0.7)' }}>{category_name || 'HOt'}</span>

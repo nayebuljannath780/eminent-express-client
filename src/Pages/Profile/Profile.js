@@ -1,5 +1,4 @@
 import React, { useContext, useRef, useState } from "react";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { AuthContext } from "../../context/AuthProvider";
 
@@ -19,10 +18,10 @@ const Profile = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <h1>Profile</h1>
+    <Form onSubmit={handleSubmit} className="mt-5">
+      <h1 className="text-center">Accounts Details</h1> <hr />
       <Form.Group className="mb-3">
-        <Form.Label>Name</Form.Label>
+        <Form.Label className="news_heading">Name</Form.Label>
         <Form.Control
           onChange={handleUserName}
           type="text"
@@ -31,20 +30,17 @@ const Profile = () => {
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label>Email</Form.Label>
+        <Form.Label className="news_heading">Email</Form.Label>
         <Form.Control type="email" defaultValue={user.email} readOnly />
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>Photo URL</Form.Label>
+        <Form.Label className="news_heading">Photo URL</Form.Label>
         <Form.Control
           ref={photoUrlRef}
           type="text"
           defaultValue={user.photoURL}
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
     </Form>
   );
 };

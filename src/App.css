@@ -22,10 +22,25 @@
   font-size: 15px;
   font-weight: 500;
 }
+.home_card {
+  transition: transform 0.3s ease-in-out;
+}
+.home_card:hover{
+  margin: 2%;
+  transform: scale(1.1);
+  .card_title{
+    font-size: medium;
+    color: var(--yellow);
+  }
+}
 
 .card_title {
   font-weight: 400 !important;
 }
+/* .card_title:hover {
+  color: var(--yellow);
+  font-weight: 400 !important;
+} */
 
 .card_text {
   font-size: small;
@@ -47,7 +62,7 @@
 .card_category_highlighter {
   position: absolute;
   color: var(--white);
-  top: 53.5%;
+  top: 56%;
   right: 4%;
 }
 

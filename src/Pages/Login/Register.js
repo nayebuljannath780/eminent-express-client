@@ -55,7 +55,7 @@ const Register = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className="mt-5" onSubmit={handleSubmit} >
       <Form.Group className="mb-3" controlId="">
         <Form.Label>Name</Form.Label>
         <Form.Control name="name" type="text" placeholder="Enter name" />
@@ -87,7 +87,7 @@ const Register = () => {
           }
         />
       </Form.Group>
-      <Button variant="primary" type="submit" disabled={!terms}>
+      <Button variant="warning" type="submit" disabled={!terms}>
         Register
       </Button>
       <Form.Text className="text-danger">{error}</Form.Text>

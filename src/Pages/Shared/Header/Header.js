@@ -24,15 +24,15 @@ const Header = () => {
         fixed="top"
         collapseOnSelect
         expand="lg"
-        style={{ height: 60, marginBottom: 20 }}
+        style={{ height: 60, marginBottom: 20, background: 'var(--yellow)'}}
       >
         <>
           <Navbar.Brand>
-            <Link to="/">EminentExpress</Link>
+            <Link style={{color: 'var(--white)', marginLeft:'5rem'}} to="/">EminentExpress</Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mr-auto">
+            <Nav >
               <NavDropdown title="Account" id="account-dropdown">
                 {user?.displayName ? (
                   <>

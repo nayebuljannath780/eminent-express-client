@@ -10,7 +10,7 @@ const News = () => {
 
   return (
 
-    <Card className="my-3">
+    <Card className="my-3 mt-5">
       <Card.Header className=" border-0">
         <div className="d-flex justify-content-between align-items-center">
           <div className="d-flex">
