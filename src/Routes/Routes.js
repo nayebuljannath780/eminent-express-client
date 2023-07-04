@@ -17,13 +17,13 @@ export const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:8080/news"),
+        loader: () => fetch("https://eminent-express-server.vercel.app/news"),
       },
       {
         path: "/category/:id",
         element: <Category />,
         loader: ({ params }) =>
-          fetch(`http://localhost:8080/category/${params.id}`),
+          fetch(`https://eminent-express-server.vercel.app/category/${params.id}`),
       },
       {
         path: "/news/:id",
@@ -33,7 +33,7 @@ export const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:8080/news/${params.id}`),
+          fetch(`https://eminent-express-server.vercel.app/news/${params.id}`),
       },
       {
         path: "/login",

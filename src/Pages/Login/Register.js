@@ -4,12 +4,14 @@ import Form from "react-bootstrap/Form";
 import { AuthContext } from "../../context/AuthProvider";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import useTitle from "../../Hooks/useTitle";
 
 const Register = () => {
   const [error, setError] = useState("");
   const [terms, setTerms] = useState(false);
-  const { createUser, updateUserProfile, emailVerification } =
-    useContext(AuthContext);
+  const { createUser, updateUserProfile, emailVerification } = useContext(AuthContext);
+  useTitle('Register');
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -41,7 +43,7 @@ const Register = () => {
       photoURL: photoURL,
     };
     updateUserProfile(profile)
-      .then(() => {})
+      .then(() => { })
       .catch((e) => console.error(e));
   };
 

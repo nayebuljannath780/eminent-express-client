@@ -4,10 +4,12 @@ import NewsSummaryCard from "../Shared/NewsSummaryCard/NewsSummaryCard";
 import Slider from "../../components/Slider/Slider";
 import { Row, Col } from 'react-bootstrap';
 import About from "../About/About";
+import useTitle from "../../Hooks/useTitle";
 
 
 const Home = () => {
   const allNews = useLoaderData();
+  useTitle('Home');
 
   return (
     <div className="main_container">

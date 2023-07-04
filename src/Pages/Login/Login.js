@@ -6,12 +6,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { GoogleAuthProvider } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
+import useTitle from "../../Hooks/useTitle";
 
 const Login = () => {
   const [error, setError] = useState("");
   const { loginUser, setLoading } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  useTitle('Login');
 
   const from = location.state?.from?.pathname || "/";
 
@@ -50,6 +52,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
       })
       .then((error) => console.error(error));
   };

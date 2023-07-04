@@ -9,7 +9,7 @@ const RightSideNav = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/category")
+    fetch("https://eminent-express-server.vercel.app/category")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);
