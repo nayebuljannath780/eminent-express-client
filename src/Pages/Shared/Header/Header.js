@@ -12,7 +12,7 @@ const Header = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => { })
       .catch((error) => {
         console.error(error);
       });
@@ -24,11 +24,11 @@ const Header = () => {
         fixed="top"
         collapseOnSelect
         expand="lg"
-        style={{ height: 60, marginBottom: 20, background: 'var(--yellow)'}}
+        style={{ height: 60, marginBottom: 20, background: 'var(--yellow)' }}
       >
         <>
           <Navbar.Brand>
-            <Link style={{color: 'var(--white)', marginLeft:'5rem'}} to="/">EminentExpress</Link>
+            <Link style={{ color: 'var(--white)', marginLeft: '5rem' }} to="/">EminentExpress</Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -62,7 +62,7 @@ const Header = () => {
                     alt=""
                   />
                 ) : (
-                  <FaUserAlt />
+                  <FaUserAlt className="text-dark" />
                 )}
               </Link>
             </Nav>

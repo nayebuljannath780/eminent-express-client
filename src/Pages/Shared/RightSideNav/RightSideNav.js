@@ -21,7 +21,7 @@ const RightSideNav = () => {
         {categories.map((category) => (
           <ListGroup.Item className="categories_list border-0 mb-2" key={category.id}>
             <Link to={`/category/${category.id}`}>
-              <div className="d-flex">
+              <div className="d-flex align-items-center">
                 <div>
                   <img src={category.c_logo} alt='' className="cate_list_img" />
                 </div>
